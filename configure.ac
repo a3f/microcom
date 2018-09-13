@@ -3,6 +3,11 @@ AC_CONFIG_AUX_DIR([build-aux])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE([dist-xz])
 
+dnl If autoconf-archive isn't installed the macro AX_PTHREAD might be undefined
+dnl and make it into configure. This breaks the generated Makefile, so detect
+dnl this at autoconf time.
+m4_pattern_forbid([^AX_PTHREAD])
+
 AC_PREREQ([2.69])
 AC_CONFIG_SRCDIR([commands_fsl_imx.c])
 AC_CONFIG_HEADERS([config.h])
