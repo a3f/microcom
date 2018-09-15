@@ -7,6 +7,8 @@ AC_PREREQ([2.69])
 AC_CONFIG_SRCDIR([commands_fsl_imx.c])
 AC_CONFIG_HEADERS([config.h])
 
+m4_pattern_forbid([AX_PTHREAD], [AX_PTHREAD is undefined. Maybe you should install the "autoconf-archive" package!])
+
 # Checks for programs.
 AC_PROG_CC
 AX_PTHREAD
