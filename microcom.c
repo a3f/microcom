@@ -150,13 +150,13 @@ int flag_to_baudrate(speed_t speed)
 
 void microcom_exit(int signal)
 {
-	printf("exiting\n");
+	write(1, "exiting\n", 8);
 
 	ios->exit(ios);
 	tcsetattr(STDIN_FILENO, TCSANOW, &sots);
 
 	if (signal)
-		exit(0);
+		_Exit(0);
 }
 
 /********************************************************************
