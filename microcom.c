@@ -202,7 +202,7 @@ int listenonly = 0;
 
 int main(int argc, char *argv[])
 {
-	struct sigaction sact;  /* used to initialize the signal handler */
+	struct sigaction sact = {0};  /* used to initialize the signal handler */
 	int opt, ret;
 	char *hostport = NULL;
 	int telnet = 0, can = 0;
@@ -319,6 +319,7 @@ int main(int argc, char *argv[])
 		/* set the signal handler to restore the old
 		 * termios handler */
 		sact.sa_handler = &microcom_exit;
+		sigemptyset(&sact.sa_mask);
 		sigaction(SIGHUP, &sact, NULL);
 		sigaction(SIGINT, &sact, NULL);
 		sigaction(SIGPIPE, &sact, NULL);
